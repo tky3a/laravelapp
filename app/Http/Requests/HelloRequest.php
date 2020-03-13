@@ -13,7 +13,7 @@ class HelloRequest extends FormRequest
      */
     public function authorize()
     {
-        // 現在のpathがhelloならフォーム送信可能　違うなら例外エラー
+        // 現在のpathがhelloならフォーム送信可能　違うなら例外エラー xx
         if ($this->path() == 'hello')
         {
             return true;
