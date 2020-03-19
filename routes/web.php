@@ -24,3 +24,4 @@ Route::get('/hello/add', 'HelloController@add');
 Route::post('/hello/add', 'HelloController@create');
 Route::get('/hello/edit/{id}', 'HelloController@edit');
 Route::post('/hello/edit', 'HelloController@update');
+Route::get('/hello/{id}', 'HelloController@show');
