@@ -17,8 +17,15 @@ class PersonController extends Controller
   }
 
   public function search(Request $request){
+    // where検索
+    // $input_val = $request->input;
+    // $item = Person::where('name', $input_val)->first();
+    // $params = ['input' => $input_val, 'id' => $request->id, 'item' => $item];
+    // return view('person.find', $params);
     $input_val = $request->input;
-    $item = Person::find($input_val);
-    return view('person.find', ['input' => $input_val, 'id' => $request->id, 'item' => $item]);
+    $people = Person::all();
+    dump($item = Person::NameEqual($input_val)->first());
+    $params = ['input' => $input_val, 'id' => $request->id, 'item' => $item];
+    return view('person.find', $params);
   }
 }
