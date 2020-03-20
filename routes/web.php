@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// hello routes
 Route::get('/hello', 'HelloController@index');
 Route::post('/hello', 'HelloController@post');
 Route::get('/hello/add', 'HelloController@add');
@@ -26,3 +27,8 @@ Route::get('/hello/edit/{id}', 'HelloController@edit');
 Route::post('/hello/edit', 'HelloController@update');
 Route::get('/hello/{id}', 'HelloController@show');
 Route::post('/hello/delete', 'HelloController@delete');
+
+// person routes
+Route::get('/person', 'PersonController@index');
+Route::get('/person/{id}', 'PersonController@find');
+Route::post('/person/{id}', 'PersonController@search');
