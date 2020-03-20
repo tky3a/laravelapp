@@ -9,22 +9,18 @@
 
 @section('content')
   <table>
+    @foreach ($items as $item)
     <tr>
       <th>id: </th>
       <td>{{ $item->id }}</td>
-    </tr>
-    <tr>
       <th>name: </th>
       <td>{{ $item->name }}</td>
-    </tr>
-    <tr>
-      <th>name: </th>
+      <th>email: </th>
       <td>{{ $item->email }}</td>
-    </tr>
-    <tr>
-      <th>name: </th>
+      <th>age: </th>
       <td>{{ $item->age }}</td>
     </tr>
+    @endforeach
   </table>
 @endsection
 

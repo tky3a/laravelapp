@@ -13,10 +13,10 @@ class HelloController extends Controller
   public function index(Request $request) {
     // dd(['id' => $request->id]);
     // 値が存在している場合
-    $items = DB::table('people')->get();
+    $items = DB::table('people')->orderBy('age', 'desc')->get();
     return view('hello.index', ['items' => $items]);
 
-
+    var_dump('hoge');
     // cookieに値を持たせる
     // if ($request->hasCookie('msg'))
     // {
@@ -48,7 +48,7 @@ class HelloController extends Controller
       'email' => $request->email,
       'age' => $request->age
     ];
-    DB::insert('insert into people (name, email, age) values (:name, :email, :age)', $params);
+    DB::table('people')->insert($params);
     return redirect('/hello');
   }
 
@@ -65,13 +65,25 @@ class HelloController extends Controller
       'email' => $request->email,
       'age' => $request->age
     ];
-    DB::update('update people set name = :name, email = :email, age = :age where id = :id', $params);
+    DB::table('people')->where('id', $request->id)->update($params);
     return redirect('/hello');
   }
 
   public function show(Request $request){
-    $item = DB::table('people')->where('id',$request->id)->first();
-    return view('hello.show', ['item'=>$item]);
+    $page = $request->page;
+    $items = DB::table('people')
+      ->offset($page * 3)
+      ->limit(3)
+      ->get();
+    // $items = DB::table('people')->where('id','<=', $request->id)->get();
+    return view('hello.show', ['items'=>$items]);
+  }
+
+  public function delete(Request $request){
+    $id = $request->delete_id;
+    $person = DB::table('people')->where('id', $id);
+    $person->delete();
+    return redirect('/hello');
   }
 
 }
