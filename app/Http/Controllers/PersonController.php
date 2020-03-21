@@ -55,4 +55,21 @@ class PersonController extends Controller
     $person->fill($request_params)->save();
     return redirect('/person');
   }
+
+  public function edit(Request $request)
+  {
+    $person = Person::find($request->id);
+    return view('person.edit', ['person' => $person]);
+  }
+
+  public function update(Request $request)
+  {
+    $this->validate($request, Person::$rules);
+    $person = Person::find($request->id);
+    $params = $request->all();
+    unset($params['_token']);
+    $person->fill($params)->save();
+    return redirect('/person');
+  }
+
 }

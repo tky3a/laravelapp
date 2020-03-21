@@ -17,6 +17,9 @@
     </tr> -->
     @foreach($people as $person)
     <tr>
+      <td>
+        <a href="{{ 'person/edit/' . $person->id }}">{{ $person->id }}</a>
+      </td>
       <td>{{$person->getData()}}</td>
       <!-- <td>{{ $person->id }}</td>
       <td>{{ $person->name }}</td>
