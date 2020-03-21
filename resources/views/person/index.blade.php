@@ -15,6 +15,8 @@
       <th>Email</th>
       <th>Age</th>
     </tr> -->
+    <form action="{{ url('/person') }}" method="post">
+    {{ csrf_field() }}
     @foreach($people as $person)
     <tr>
       <td>
@@ -25,8 +27,10 @@
       <td>{{ $person->name }}</td>
       <td>{{ $person->email }}</td>
       <td>{{ $person->age }}</td> -->
+        <td><button type="submit" name="delete_id" value="{{ $person->id }}">削除</button></td>
     </tr>
     @endforeach
+    </form>
   </table>
 @endsection
 
