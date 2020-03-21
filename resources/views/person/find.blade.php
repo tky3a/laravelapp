@@ -13,7 +13,7 @@
     <input type="text" name="input" value="{{$input}}">
     <input type="submit" value="find">
   </form>
-
+<!-- 
   @if (isset($item))
     <table>
       <tr>
@@ -23,6 +23,19 @@
         <td>{{ $item->getData() }}</td>
       </tr>
     </table>
+  @endif -->
+
+  @if(isset($items))
+    @foreach ($items as $item)
+      <table>
+        <tr>
+          <th>Data</th>
+        </tr>
+        <tr>
+          <td>{{ $item->getData() }}</td>
+        </tr>
+      </table>
+    @endforeach
   @endif
 @endsection
 
