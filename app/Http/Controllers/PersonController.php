@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class PersonController extends Controller
 {
-
   public function index(){
     $people = Person::all();
     return view('person.index', ['people' => $people]);
@@ -37,5 +36,23 @@ class PersonController extends Controller
     // dump(count($items));
     $params = ['id' => $request->id, 'input' => $request->input, 'items' => $items];
     return view('person.find', $params);
+  }
+
+  public function add(Request $request)
+  {
+    var_dump('addアクションです');
+    return view('person.add');
+  }
+  
+  public function create(Request $request)
+  {
+    $this->validate($request, Person::$rules);
+    $person = new Person;
+    $request_params = $request->all();
+    // dd($request_params);
+    // $request_params = ['name' => $request->name, 'email' => $request->email, 'age' => $request->age];
+    unset($request_params['_token']); #tokenを削除
+    $person->fill($request_params)->save();
+    return redirect('/person');
   }
 }

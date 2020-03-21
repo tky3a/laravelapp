@@ -30,5 +30,7 @@ Route::post('/hello/delete', 'HelloController@delete');
 
 // person routes
 Route::get('/person', 'PersonController@index');
+Route::get('/person/add', 'PersonController@add');
+Route::post('/person/create', 'PersonController@create');
 Route::get('/person/{id}', 'PersonController@find');
 Route::post('/person/{id}', 'PersonController@search');

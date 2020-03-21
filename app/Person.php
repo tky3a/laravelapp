@@ -8,6 +8,24 @@ use App\Scope\ScopePerson;
 
 class Person extends Model
 {
+  // バリデーション  //
+  # 値を用意しておかない項目を$guardedに記載(nullで困らない値)
+  protected $guarded = array('id');
+
+  # 配列ではないrequest(通常の受け取り)
+  public static $rules = array(
+    'name' => 'required',
+    'email' => 'email',
+    'age' => 'integer|min:0|max:150'
+  );  
+
+  # requestが配列で送られてくる場合は'配列.要素名'
+  // public static $rules = array(
+  //   'person.name' => 'required',
+  //   'person.email' => 'email',
+  //   'person.age' => 'integer|min:0|max:150'
+  // );
+
   // グローバルスコープ定義 //
   protected static function boot()
   {

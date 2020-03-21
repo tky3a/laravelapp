@@ -16,7 +16,7 @@ class HelloController extends Controller
     $items = DB::table('people')->orderBy('age', 'desc')->get();
     return view('hello.index', ['items' => $items]);
 
-    var_dump('hoge');
+    // var_dump('hoge');
     // cookieに値を持たせる
     // if ($request->hasCookie('msg'))
     // {

@@ -29,7 +29,6 @@ class HelloServiceProvider extends ServiceProvider
     {
       $validator = $this->app['validator'];
       $validator->resolver(function($translator, $data, $rules, $messages){
-        dump("hoge");
         return new HelloValidator($translator, $data, $rules, $messages);
       });
     }
