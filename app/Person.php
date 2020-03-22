@@ -8,8 +8,18 @@ use App\Scope\ScopePerson;
 
 class Person extends Model
 {
+  // リレーション
+  public function boards()
+  {
+    return $this->hasMany('App\Board');
+  }
+  // public function board()
+  // {
+  //   return $this->hasOne('App\Board');
+  // }
+
   // バリデーション  //
-  # 値を用意しておかない項目を$guardedに記載(nullで困らない値)
+  # 値を用意しておかない項目を$guardedに記載(基本的にはid)
   protected $guarded = array('id');
 
   # 配列ではないrequest(通常の受け取り)

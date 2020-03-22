@@ -37,3 +37,8 @@ Route::post('/person/edit/{id}', 'PersonController@update');
 Route::get('/person/{id}', 'PersonController@find');
 Route::post('/person/{id}', 'PersonController@search');
 Route::post('/person', 'PersonController@delete');
+
+// board routes
+Route::get('/boards', 'BoardController@index');
+Route::get('/boards/add', 'BoardController@add');
+Route::post('/boards/add', 'BoardController@create');

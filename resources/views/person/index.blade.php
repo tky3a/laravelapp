@@ -9,28 +9,35 @@
 
 @section('content')
   <table>
-    <!-- <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Age</th>
-    </tr> -->
-    <form action="{{ url('/person') }}" method="post">
-    {{ csrf_field() }}
-    @foreach($people as $person)
     <tr>
-      <td>
-        <a href="{{ 'person/edit/' . $person->id }}">{{ $person->id }}</a>
-      </td>
-      <td>{{$person->getData()}}</td>
-      <!-- <td>{{ $person->id }}</td>
-      <td>{{ $person->name }}</td>
-      <td>{{ $person->email }}</td>
-      <td>{{ $person->age }}</td> -->
-        <td><button type="submit" name="delete_id" value="{{ $person->id }}">削除</button></td>
+      <th>Person</th>
+      <th>Board</th>
     </tr>
+    @foreach ($params['hasBoards'] as $person)
+      <tr>
+        <td>{{ $person->getData() }}</td>
+        <td>
+          <table width="100%">
+            @foreach ($person->boards as $board)
+              <tr>
+                <td>{{ $board->getData() }}</td>
+              </tr>
+            @endforeach
+          </table>
+        </td>
+      </tr>
     @endforeach
-    </form>
+  </table>
+  <div style="margin: 10px;"></div>
+  <table>
+    <tr>
+      <th>Person</th>
+    </tr>
+    @foreach ($params['noBoards'] as $person)
+      <tr>
+        <td>{{ $person->getData() }}</td>
+      </tr>
+    @endforeach
   </table>
 @endsection
 

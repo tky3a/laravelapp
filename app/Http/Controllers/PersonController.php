@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class PersonController extends Controller
 {
-  public function index(){
-    $people = Person::all();
-    return view('person.index', ['people' => $people]);
+  public function index(Request $request){
+    $hasBoards = Person::has('boards')->get();
+    $noBoards = Person::doesntHave('boards')->get(); 
+    $params = ['hasBoards' => $hasBoards, 'noBoards' => $noBoards];
+    dd(Person::with('boards')->get());
+    // $people = Person::all();
+    // dd($params['hasBoards']->first()->id);
+    return view('person.index', ['params' => $params]);
   }
 
   public function find(Request $request){
