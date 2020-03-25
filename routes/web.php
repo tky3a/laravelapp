@@ -22,12 +22,16 @@ Route::get('/', function () {
 Route::get('/hello', 'HelloController@index');
 Route::post('/hello', 'HelloController@post');
 Route::get('/hello/rest','HelloController@rest');
+Route::get('/hello/session', 'HelloController@ses_get');
+Route::post('/hello/session', 'HelloController@ses_put');
 Route::get('/hello/add', 'HelloController@add');
 Route::post('/hello/add', 'HelloController@create');
 Route::get('/hello/edit/{id}', 'HelloController@edit');
 Route::post('/hello/edit', 'HelloController@update');
 Route::get('/hello/{id}', 'HelloController@show');
 Route::post('/hello/delete', 'HelloController@delete');
+
+
 
 // person routes
 Route::get('/person', 'PersonController@index');
