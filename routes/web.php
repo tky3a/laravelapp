@@ -21,6 +21,7 @@ Route::get('/', function () {
 // hello routes
 Route::get('/hello', 'HelloController@index');
 Route::post('/hello', 'HelloController@post');
+Route::get('/hello/rest','HelloController@rest');
 Route::get('/hello/add', 'HelloController@add');
 Route::post('/hello/add', 'HelloController@create');
 Route::get('/hello/edit/{id}', 'HelloController@edit');
@@ -42,3 +43,7 @@ Route::post('/person', 'PersonController@delete');
 Route::get('/boards', 'BoardController@index');
 Route::get('/boards/add', 'BoardController@add');
 Route::post('/boards/add', 'BoardController@create');
+
+// リソースを使ったルーティング
+// restapp routes
+Route::resource('rest', 'RestappController');
