@@ -7,13 +7,16 @@ use Illuminate\Http\Response;
 use App\Http\Requests\HelloRequest;
 use Validator; #Validatorメソッドを使う
 use Illuminate\Support\Facades\DB;
+use App\Person;
 
 class HelloController extends Controller
 {
   public function index(Request $request) {
     // dd(['id' => $request->id]);
     // 値が存在している場合
-    $items = DB::table('people')->orderBy('age', 'desc')->get();
+    // $items = DB::table('people')->orderBy('age', 'desc')->get();
+    $items = Person::orderBy('age', 'desc')->paginate(5);
+    dd($items);
     return view('hello.index', ['items' => $items]);
 
     // var_dump('hoge');

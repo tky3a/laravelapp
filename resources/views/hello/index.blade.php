@@ -27,6 +27,14 @@
     </tr>
   @endforeach
 </table>
+<style>
+  .page ul li{
+    display: inline;
+  }
+</style>
+<div class="page">
+    {{ $items->links() }}
+</div>
 </form>
 @endsection
 
