@@ -51,3 +51,10 @@ Route::post('/boards/add', 'BoardController@create');
 // リソースを使ったルーティング
 // restapp routes
 Route::resource('rest', 'RestappController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

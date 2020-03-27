@@ -16,7 +16,6 @@ class HelloController extends Controller
     // 値が存在している場合
     // $items = DB::table('people')->orderBy('age', 'desc')->get();
     $items = Person::orderBy('age', 'desc')->paginate(5);
-    dd($items);
     return view('hello.index', ['items' => $items]);
 
     // var_dump('hoge');
