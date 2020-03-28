@@ -8,6 +8,14 @@
 @endsection
 
 @section('content')
+@if (Auth::check())
+  <p>USER: {{ $user->name . '(' . $user->email . ')' }}</p>
+@else
+  <p>
+    ※ログインしていません。(<a href="/login">ログイン</a>|
+    <a href="/regster">登録</a>)
+  </p>
+@endif
 <form action="/hello/delete" method="post">
 {{ csrf_field() }}
 <table>

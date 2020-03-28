@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Http\Requests\HelloRequest;
 use Validator; #Validatorメソッドを使う
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Person;
 
 class HelloController extends Controller
@@ -15,8 +16,11 @@ class HelloController extends Controller
     // dd(['id' => $request->id]);
     // 値が存在している場合
     // $items = DB::table('people')->orderBy('age', 'desc')->get();
-    $items = Person::orderBy('age', 'desc')->paginate(5);
-    return view('hello.index', ['items' => $items]);
+    $user = Auth::user();
+    $sort = $request->sort;
+    $items = Person::orderBy($sort, 'asc')->paginate(5);
+    $params = ['items' => $items, 'sort' => $sort, 'user' => $user];
+    return view('hello.index', $params);
 
     // var_dump('hoge');
     // cookieに値を持たせる

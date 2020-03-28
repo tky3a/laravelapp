@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 // hello routes
-Route::get('/hello', 'HelloController@index');
+Route::get('/hello', 'HelloController@index')->middleware('auth');
 Route::post('/hello', 'HelloController@post');
 Route::get('/hello/rest','HelloController@rest');
 Route::get('/hello/session', 'HelloController@ses_get');
