@@ -21,6 +21,8 @@ Route::get('/', function () {
 // hello routes
 Route::get('/hello', 'HelloController@index')->middleware('auth');
 Route::post('/hello', 'HelloController@post');
+Route::get('/hello/auth', 'HelloController@getAuth');
+Route::post('/hello/auth', 'HelloController@postAuth');
 Route::get('/hello/rest','HelloController@rest');
 Route::get('/hello/session', 'HelloController@ses_get');
 Route::post('/hello/session', 'HelloController@ses_put');
@@ -51,9 +53,9 @@ Route::post('/boards/add', 'BoardController@create');
 // リソースを使ったルーティング
 // restapp routes
 Route::resource('rest', 'RestappController');
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
